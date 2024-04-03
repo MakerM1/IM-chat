@@ -1,0 +1,91 @@
+body {
+    background-color: #b40000;
+    position: relative;
+    font-family: "Arsenal", sans-serif;
+    overflow-y: scroll;
+
+    .logo {
+        position: fixed;
+        top: -20px;
+        left: -10px;
+    }
+
+    .chats {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        &__chat-cont {
+            position: relative;
+            max-width: fit-content;
+            padding: 0 30px;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+
+            &::after {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                width: 90%;
+                height: 100%;
+                clip-path: polygon(0 0, 89% 0, 100% 100%, 0% 100%);
+                z-index: -1;
+                right: 0;
+                background-color: red;
+                animation-name: move;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-direction: alternate;
+                opacity: 0;
+
+                @keyframes move {}
+            }
+
+            p {
+                color: white;
+                margin-left: 50px;
+                font-weight: 600;
+                background-color: black;
+                clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+                max-width: 100%;
+                width: 100%;
+                height: 50%;
+                position: absolute;
+                left: 0px;
+                top: -11px;
+            }
+
+            .pfp-cont {
+                position: absolute;
+                top: 50%;
+                left: 5px;
+                transform: translate(0, -50%);
+                width: 50px;
+                outline: 3px solid white;
+                background-color: rgba(240, 247, 62, 255);
+                clip-path: polygon(0 0, 87% 6%, 92% 81%, 15% 94%);
+
+                img {
+                    max-width: 50px;
+                    width: 100%;
+                    transform: translateY(4px);
+                }
+            }
+
+            .pfp-border {
+                position: absolute;
+                background: black;
+                width: 58px;
+                height: 68px;
+                top: 49%;
+                left: 1px;
+                transform: translate(0, -50%);
+                clip-path: polygon(0 0, 87% 6%, 92% 81%, 15% 94%);
+            }
+        }
+    }
+}
