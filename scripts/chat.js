@@ -118,7 +118,7 @@ async function run() {
     
     console.log(error);
     console.log('google hates me');
-    alert('if this pops up uh... google hates me... restart the chat 😭')
+    alert('if you get this pops up uh... google hates me... restart the chat 😭')
   }
 }
 
