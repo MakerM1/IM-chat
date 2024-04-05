@@ -171,13 +171,258 @@ body .chats__chat-cont .pfp-border {
 body .chatbox {
   width: 99%;
   height: 89vh;
-  border: 2px solid black;
 }
-body .chatbox ul:nth-child(odd) {
-  background-color: blue;
+body .chatbox ul {
+  list-style: none;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 50px;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-body .chatbox ul:nth-child(even) {
-  background-color: orange;
+body .chatbox ul li:nth-child(odd) {
+  width: 100%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+body .chatbox ul li:nth-child(odd) .message {
+  color: white;
+  background-color: white;
+  max-width: 200px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: static;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding: 10px;
+  border: 5px solid black;
+  -webkit-transform: skewX(-10deg) rotateY(180deg);
+          transform: skewX(-10deg) rotateY(180deg);
+  margin-right: 70px;
+}
+body .chatbox ul li:nth-child(odd) .message p {
+  -webkit-transform: skewX(-10deg) rotateY(180deg);
+          transform: skewX(-10deg) rotateY(180deg);
+  margin: 0;
+  font-weight: 600;
+  color: black;
+}
+body .chatbox ul li:nth-child(odd) .message::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  -webkit-clip-path: polygon(10% 52%, 19% 57%, 28% 51%, 27% 58%, 19% 64%, 13% 59%, 0 68%);
+          clip-path: polygon(10% 52%, 19% 57%, 28% 51%, 27% 58%, 19% 64%, 13% 59%, 0 68%);
+  -webkit-transform: translate(0, -52%);
+      -ms-transform: translate(0, -52%);
+          transform: translate(0, -52%);
+  left: -54px;
+  z-index: 2;
+}
+body .chatbox ul li:nth-child(odd) .message::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  background-color: black;
+  -webkit-clip-path: polygon(10% 49.5%, 19% 56.5%, 26% 51%, 27% 57%, 21% 65.5%, 12% 61%, 0 68%);
+          clip-path: polygon(10% 49.5%, 19% 56.5%, 26% 51%, 27% 57%, 21% 65.5%, 12% 61%, 0 68%);
+  -webkit-transform: translate(0, -52%);
+      -ms-transform: translate(0, -52%);
+          transform: translate(0, -52%);
+  left: -54px;
+  z-index: 1;
+}
+body .chatbox ul li:nth-child(even) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  width: 100%;
+}
+body .chatbox ul li:nth-child(even) .message {
+  color: white;
+  background-color: black;
+  max-width: 400px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  position: absolute;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  left: 90px;
+  top: -10px;
+  padding: 10px;
+  border: 5px solid white;
+  -webkit-transform: skewX(-10deg);
+      -ms-transform: skewX(-10deg);
+          transform: skewX(-10deg);
+}
+body .chatbox ul li:nth-child(even) .message p {
+  -webkit-transform: skewX(10deg);
+      -ms-transform: skewX(10deg);
+          transform: skewX(10deg);
+  margin: 0;
+  font-weight: 600;
+}
+body .chatbox ul li:nth-child(even) .message p span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 10px;
+  -webkit-animation-name: typing;
+          animation-name: typing;
+  -webkit-animation-duration: 0.65s;
+          animation-duration: 0.65s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+body .chatbox ul li:nth-child(even) .message p span:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+body .chatbox ul li:nth-child(even) .message p span:last-child {
+  margin-right: 0;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+@-webkit-keyframes typing {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes typing {
+  from {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+body .chatbox ul li:nth-child(even) .message::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  background-color: black;
+  -webkit-clip-path: polygon(10% 52%, 19% 57%, 28% 51%, 27% 58%, 19% 64%, 13% 59%, 0 68%);
+          clip-path: polygon(10% 52%, 19% 57%, 28% 51%, 27% 58%, 19% 64%, 13% 59%, 0 68%);
+  -webkit-transform: translate(0, -52%);
+      -ms-transform: translate(0, -52%);
+          transform: translate(0, -52%);
+  left: -54px;
+  z-index: 2;
+}
+body .chatbox ul li:nth-child(even) .message::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  background-color: white;
+  -webkit-clip-path: polygon(10% 49.5%, 19% 56.5%, 26% 51%, 27% 57%, 21% 65.5%, 12% 61%, 0 68%);
+          clip-path: polygon(10% 49.5%, 19% 56.5%, 26% 51%, 27% 57%, 21% 65.5%, 12% 61%, 0 68%);
+  -webkit-transform: translate(0, -52%);
+      -ms-transform: translate(0, -52%);
+          transform: translate(0, -52%);
+  left: -54px;
+  z-index: 1;
+}
+body .chatbox ul li:last-child {
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+@-webkit-keyframes fade {
+  from {
+    -webkit-transform: translateY(20px) translateX(-20px);
+            transform: translateY(20px) translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    -webkit-transform: translateY(20px) translateX(-20px);
+            transform: translateY(20px) translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0) translateX(0);
+            transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
+}
+body .chatbox ul li .pfp-cont {
+  background-color: white;
+}
+body .chatbox ul li .user-name {
+  left: 20px;
+  top: -20px;
+  -webkit-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
 }
 body .inputs {
   position: fixed;

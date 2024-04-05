@@ -27,9 +27,18 @@ const safetySettings = [
   },
 ];
 
-const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
+
+const generationConfig = {
+  temperature: 0.9,
+  topK: 1,
+  topP: 1,
+  maxOutputTokens: 1000000,
+};
 
 const chat = model.startChat({
+  generationConfig,
+  safetySettings,
   history: [
     {
       role: "user",
@@ -84,29 +93,63 @@ const chat = model.startChat({
 const chatbox = document.querySelector('.chatbox__cont')
 
 async function run() {
-  // For text-only input, use the gemini-pro model
-  const model = genAI.getGenerativeModel({
-    model: "gemini-pro",
-    safetySettings,
-  });
-
+  try {
   const msg = document.querySelector(".msg").value;
   console.log("loading...");
-  chatbox.innerHTML += `<li>Loading...</li>`
+  chatbox.innerHTML += `        <li class="bot">
+  <div class="chats__chat-cont">
+    <div class="user-name">
+      <p>Ryuji Sakamoto</p>
+      <div class="user-name__border"></div>
+    </div>
+    <div class="pfp-border"></div>
+    <div class="pfp-cont"><img src="../images/ryuji.png" alt="" /></div>
+  </div>
+  <div class="message"><p class="message-text"><span></span><span></span><span></span></p></div>
+</li>`
 
   const result = await chat.sendMessage(msg);
   const response = await result.response;
   const text = response.text();
   console.log(text);
-  chatbox.lastChild.innerHTML = text;
+  chatbox.lastChild.querySelector('.message-text').innerHTML = text;
+  chatbox.scrollTo(0, chatbox.scrollHeight, { behavior: "smooth"})
+  } catch (error) {
+    
+    console.log(error);
+    console.log('google hates me');
+    alert('if this pops up uh... google hates me... restart the chat 😭')
+  }
 }
 
 let msg = document.querySelector(".msg").value
 
 document.querySelector(".send").addEventListener("click", () => {
-  console.log(document.querySelector(".msg").value);
-  chatbox.innerHTML += `<li>${msg}</li>`
-  run();
+  if (document.querySelector(".msg").value !== '') {
+    console.log(document.querySelector(".msg").value);
+    chatbox.innerHTML += `
+    <li class="user">
+    <div class="message"><p>${document.querySelector(".msg").value}</p></div>
+    <div class="place-holder"></div>
+  </li>`
+    run();
+    chatbox.scrollTo(0, chatbox.scrollHeight, { behavior: "smooth"})
+    document.querySelector(".msg").value = ''
+  }
+});
+
+document.querySelector(".msg").addEventListener("keydown", (e) => {
+  if (e.key === 'Enter' && document.querySelector(".msg").value !== '') {
+    console.log(document.querySelector(".msg").value);
+    chatbox.innerHTML += `
+    <li class="user">
+    <div class="message"><p>${document.querySelector(".msg").value}</p></div>
+    <div class="place-holder"></div>
+  </li>`
+    run();
+    chatbox.scrollTo(0, chatbox.scrollHeight, { behavior: "smooth"})
+    document.querySelector(".msg").value = ''
+  }
 });
 
 // ...
