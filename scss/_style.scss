@@ -23,6 +23,10 @@ body {
         gap: 20px;
         overflow: visible;
 
+        a {
+            text-decoration: none;
+        }
+
         .chat {
             width: fit-content;
         }
@@ -123,6 +127,10 @@ body {
                 outline: 3px solid white;
                 background-color: rgba(240, 247, 62, 255);
                 clip-path: polygon(0 0, 87% 6%, 92% 81%, 15% 94%);
+
+                &--haru {
+                    background-color: #92819f;
+                }
 
                 img {
                     max-width: 50px;

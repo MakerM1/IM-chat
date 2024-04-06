@@ -26,6 +26,9 @@ body .chats {
   gap: 20px;
   overflow: visible;
 }
+body .chats a {
+  text-decoration: none;
+}
 body .chats .chat {
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -147,6 +150,9 @@ body .chats__chat-cont .pfp-cont {
   background-color: rgb(240, 247, 62);
   -webkit-clip-path: polygon(0 0, 87% 6%, 92% 81%, 15% 94%);
           clip-path: polygon(0 0, 87% 6%, 92% 81%, 15% 94%);
+}
+body .chats__chat-cont .pfp-cont--haru {
+  background-color: #92819f;
 }
 body .chats__chat-cont .pfp-cont img {
   max-width: 50px;

@@ -33,7 +33,7 @@ const generationConfig = {
   temperature: 0.9,
   topK: 1,
   topP: 1,
-  maxOutputTokens: 1000000,
+  maxOutputTokens: 2048,
 };
 
 const chat = model.startChat({
@@ -118,7 +118,7 @@ const chat = model.startChat({
     {
       role: "model",
       parts: [
-        { text: "**Hey there! I'm Ryuji Sakamoto, aka Skull. You" },
+        { text: "Hey there! I'm Ryuji Sakamoto, aka Skull. You" },
       ],
     },
   ],

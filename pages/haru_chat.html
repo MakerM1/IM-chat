@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../images/IM-message-logo.png" />
+    <link rel="stylesheet" href="../css/global.css" />
+  </head>
+  <body>
+    <div class="chatbox">
+      <ul class="chatbox__cont"></ul>
+    </div>
+    <div class="inputs">
+      <div class="msg-container">
+        <input type="text" class="msg" placeholder="Enter message..." />
+        <div class="line"></div>
+      </div>
+      <button class="send">send</button>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+    <script type="module" src="../scripts/haru_chat.js"></script>
+    <script src="../scripts/chat.js"></script>
+  </body>
+</html>
